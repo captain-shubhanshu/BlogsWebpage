@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Blogs Page | {{title}}</title>
+</head>
+
+<body>
+    <header>
+        <h1>Discover yours and others thoughts here!</h1>
+    </header>
+    <main>
+        <section id="create-blogs">
+            <h2>Create a Blog</h2>
+            <form action="/blog" method="post">
+                <p>Title: <input type="text" name="title" id="title" required></p>
+                <p>Category:
+                    <select name="category" id="category" required>
+                        <option value="">--Select a category--</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Technology">Technology</option>
+                        <option value="DSA">DSA</option>
+                        <option value="Web">Web</option>
+                        <option value="Android">Android</option>
+                    </select>
+                </p>
+                <p>Email Id: <input type="email" name="email" id="email" required></p>
+                <p>Author: <input type="text" name="author" id="author" required></p>
+                <p>Content: <textarea name="content" id="content" cols="30" rows="10" maxlength="150"
+                        required></textarea></p>
+                <p>Date of upload: <input type="date" name="date" id="date" required></p>
+                <input type="submit" value="Save Blog!" id="btn">
+            </form>
+        </section>
+        <section id="blogs">
+            <h2>List of Blogs</h2>
+            {{#each blogs as |blog|}}
+            <div class="blog">
+                <h3>{{blog.title}}</h3>
+                <p>Category: {{blog.category}}</p>
+                <p>Email: {{blog.email}}</p>
+                <p>Posted by: {{blog.author}}</p>
+                <p>Content: {{blog.content}}</p>
+                <p>Posted on: {{blog.date}}</p>
+                <div id="editing-options">
+                    <button id="up">⬆</button>
+                    <button id="down">⬇</button>
+                    <button id="delete">❌</button>
+                    <button id="edit">✍🏽</button>
+                </div>
+            </div>
+            {{/each}}
+        </section>
+    </main>
+</body>
+
+</html>
